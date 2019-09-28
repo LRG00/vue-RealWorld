@@ -1,9 +1,16 @@
+<!--
+ * @Author: liruigang
+ * @Date: 2019-09-27 21:28:58
+ * @LastEditors: liruigang
+ * @LastEditTime: 2019-09-28 09:05:12
+ * @UI: 
+ -->
 <template>
   <div class="home-page">
     <div class="banner">
       <div class="container">
-        <h1 class="logo-font">conduit</h1>
-        <p>A place to share your knowledge.</p>
+        <h1 class="logo-font">leeruigan</h1>
+        <p>分享知识的地方</p>
       </div>
     </div>
     <div class="container page">
@@ -17,7 +24,7 @@
                   class="nav-link"
                   active-class="active"
                 >
-                  Your Feed
+                  你的发布
                 </router-link>
               </li>
               <li class="nav-item">
@@ -27,7 +34,7 @@
                   class="nav-link"
                   active-class="active"
                 >
-                  Global Feed
+                  所有人的发布
                 </router-link>
               </li>
               <li class="nav-item" v-if="tag">
@@ -45,7 +52,7 @@
         </div>
         <div class="col-md-3">
           <div class="sidebar">
-            <p>Popular Tags</p>
+            <p>热门标签</p>
             <div class="tag-list">
               <RwvTag v-for="(tag, index) in tags" :name="tag" :key="index">
               </RwvTag>

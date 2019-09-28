@@ -1,3 +1,10 @@
+<!--
+ * @Author: liruigang
+ * @Date: 2019-09-27 21:28:58
+ * @LastEditors: liruigang
+ * @LastEditTime: 2019-09-27 21:28:58
+ * @UI: 
+ -->
 <template>
   <div class="profile-page">
     <div class="user-info">
@@ -12,14 +19,14 @@
                 class="btn btn-sm btn-outline-secondary action-btn"
                 :to="{ name: 'settings' }"
               >
-                <i class="ion-gear-a"></i> Edit Profile Settings
+                <i class="ion-gear-a"></i> 编辑个人资料
               </router-link>
             </div>
             <div v-else>
               <button
                 class="btn btn-sm btn-secondary action-btn"
                 v-if="profile.following"
-                @click.prevent="unfollow();"
+                @click.prevent="unfollow()"
               >
                 <i class="ion-plus-round"></i> &nbsp;Unfollow
                 {{ profile.username }}
@@ -27,7 +34,7 @@
               <button
                 class="btn btn-sm btn-outline-secondary action-btn"
                 v-if="!profile.following"
-                @click.prevent="follow();"
+                @click.prevent="follow()"
               >
                 <i class="ion-plus-round"></i> &nbsp;Follow
                 {{ profile.username }}

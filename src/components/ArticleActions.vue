@@ -1,3 +1,10 @@
+<!--
+ * @Author: liruigang
+ * @Date: 2019-09-27 21:28:58
+ * @LastEditors: liruigang
+ * @LastEditTime: 2019-09-27 21:28:58
+ * @UI: 
+ -->
 <template>
   <!-- Used when user is also author -->
   <span v-if="canModify">

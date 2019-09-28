@@ -1,3 +1,10 @@
+/*
+ * @Author: liruigang
+ * @Date: 2019-09-27 21:28:58
+ * @LastEditors: liruigang
+ * @LastEditTime: 2019-09-28 00:30:36
+ * @UI:
+ */
 import ApiService from "@/common/api.service";
 import JwtService from "@/common/jwt.service";
 import {
@@ -79,8 +86,8 @@ const actions = {
       user.password = password;
     }
 
-    return ApiService.put("user", user).then(({ data }) => {
-      context.commit(SET_AUTH, data.user);
+    return ApiService.put("user", { user }).then(({ data }) => {
+      context.commit(SET_AUTH, data);
       return data;
     });
   }

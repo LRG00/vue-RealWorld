@@ -1,17 +1,24 @@
+<!--
+ * @Author: liruigang
+ * @Date: 2019-09-27 21:28:58
+ * @LastEditors: liruigang
+ * @LastEditTime: 2019-09-28 09:14:36
+ * @UI: 
+ -->
 <template>
   <div class="settings-page">
     <div class="container page">
       <div class="row">
         <div class="col-md-6 offset-md-3 col-xs-12">
-          <h1 class="text-xs-center">Your Settings</h1>
-          <form @submit.prevent="updateSettings();">
+          <h1 class="text-xs-center">个人资料</h1>
+          <form @submit.prevent="updateSettings()">
             <fieldset>
               <fieldset class="form-group">
                 <input
                   class="form-control"
                   type="text"
                   v-model="currentUser.image"
-                  placeholder="URL of profile picture"
+                  placeholder="图片路径"
                 />
               </fieldset>
               <fieldset class="form-group">
@@ -19,7 +26,7 @@
                   class="form-control form-control-lg"
                   type="text"
                   v-model="currentUser.username"
-                  placeholder="Your username"
+                  placeholder="你的昵称"
                 />
               </fieldset>
               <fieldset class="form-group">
@@ -27,7 +34,7 @@
                   class="form-control form-control-lg"
                   rows="8"
                   v-model="currentUser.bio"
-                  placeholder="Short bio about you"
+                  placeholder="简单介绍自己"
                 ></textarea>
               </fieldset>
               <fieldset class="form-group">
@@ -35,7 +42,7 @@
                   class="form-control form-control-lg"
                   type="text"
                   v-model="currentUser.email"
-                  placeholder="Email"
+                  placeholder="邮箱"
                 />
               </fieldset>
               <fieldset class="form-group">
@@ -43,18 +50,18 @@
                   class="form-control form-control-lg"
                   type="password"
                   v-model="currentUser.password"
-                  placeholder="Password"
+                  placeholder="密码"
                 />
               </fieldset>
               <button class="btn btn-lg btn-primary pull-xs-right">
-                Update Settings
+                确定修改
               </button>
             </fieldset>
           </form>
           <!-- Line break for logout button -->
           <hr />
           <button @click="logout" class="btn btn-outline-danger">
-            Or click here to logout.
+            点击退出登陆
           </button>
         </div>
       </div>
@@ -73,6 +80,7 @@ export default {
   },
   methods: {
     updateSettings() {
+      console.log("ccc");
       this.$store.dispatch(UPDATE_USER, this.currentUser).then(() => {
         // #todo, nice toast and no redirect
         this.$router.push({ name: "home" });

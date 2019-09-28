@@ -1,3 +1,10 @@
+<!--
+ * @Author: liruigang
+ * @Date: 2019-09-27 21:28:58
+ * @LastEditors: liruigang
+ * @LastEditTime: 2019-09-28 10:57:19
+ * @UI: 
+ -->
 <template>
   <div class="article-meta">
     <router-link
@@ -31,7 +38,7 @@
         }"
       >
         <i class="ion-heart"></i>
-        <span class="counter"> {{ article.favoritesCount }} </span>
+        <span class="counter">{{ article.favoriteCount }} </span>
       </button>
     </template>
   </div>

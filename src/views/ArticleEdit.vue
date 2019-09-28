@@ -1,10 +1,17 @@
+<!--
+ * @Author: liruigang
+ * @Date: 2019-09-27 21:28:58
+ * @LastEditors: liruigang
+ * @LastEditTime: 2019-09-27 23:56:30
+ * @UI: 
+ -->
 <template>
   <div class="editor-page">
     <div class="container page">
       <div class="row">
         <div class="col-md-10 offset-md-1 col-xs-12">
           <RwvListErrors :errors="errors" />
-          <form v-on:submit.prevent="onPublish(article.slug);">
+          <form v-on:submit.prevent="onPublish(article.slug)">
             <fieldset :disabled="inProgress">
               <fieldset class="form-group">
                 <input
@@ -37,7 +44,7 @@
                   class="form-control"
                   placeholder="Enter tags"
                   v-model="tagInput"
-                  v-on:keypress.enter.prevent="addTag(tagInput);"
+                  v-on:keypress.enter.prevent="addTag(tagInput)"
                 />
                 <div class="tag-list">
                   <span
@@ -45,8 +52,7 @@
                     v-for="(tag, index) of article.tagList"
                     :key="tag + index"
                   >
-                    <i class="ion-close-round" v-on:click="removeTag(tag);">
-                    </i>
+                    <i class="ion-close-round" v-on:click="removeTag(tag)"> </i>
                     {{ tag }}
                   </span>
                 </div>
@@ -123,20 +129,24 @@ export default {
   },
   methods: {
     onPublish(slug) {
+      // this.$router.push({name: "article", params: {slug:'1-nnw9n7'}})
       let action = slug ? ARTICLE_EDIT : ARTICLE_PUBLISH;
       this.inProgress = true;
       this.$store
-        .dispatch(action)
+        .dispatch(action, this.$store.state.auth.user.id)
         .then(({ data }) => {
+          console.log(data, "mmmmm");
           this.inProgress = false;
           this.$router.push({
             name: "article",
-            params: { slug: data.article.slug }
+            params: { slug: data.slug }
           });
         })
         .catch(({ response }) => {
           this.inProgress = false;
-          this.errors = response.data.errors;
+          if (response && response.data) {
+            this.errors = response.data.errors;
+          }
         });
     },
     removeTag(tag) {

@@ -1,3 +1,10 @@
+/*
+ * @Author: liruigang
+ * @Date: 2019-09-27 21:28:58
+ * @LastEditors: liruigang
+ * @LastEditTime: 2019-09-27 23:38:30
+ * @UI:
+ */
 import Vue from "vue";
 import {
   ArticlesService,
@@ -74,8 +81,8 @@ export const actions = {
     context.commit(UPDATE_ARTICLE_IN_LIST, data.article, { root: true });
     context.commit(SET_ARTICLE, data.article);
   },
-  [ARTICLE_PUBLISH]({ state }) {
-    return ArticlesService.create(state.article);
+  [ARTICLE_PUBLISH]({ state }, userId) {
+    return ArticlesService.create({ ...state.article, userId });
   },
   [ARTICLE_DELETE](context, slug) {
     return ArticlesService.destroy(slug);
